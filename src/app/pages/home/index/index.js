@@ -4,10 +4,26 @@
  *
  * The home index page
  */
+ let firebase = require('firebase');
+ let app = firebase.initializeApp({apiKey: "AIzaSyD2-KL9ohgtMUZQi27QyoswmuWNsEA-t9Q",
+     authDomain: "busy-d727c.firebaseapp.com",
+     databaseURL: "https://busy-d727c.firebaseio.com",
+     storageBucket: "busy-d727c.appspot.com",
+     messagingSenderId: "555996787874"});
 
 export default {
   components: {
     VLayout: require('layouts/default/default.vue'),
     VPanel: require('components/panel/panel.vue'),
+  },
+
+  methods:{
+      testFirebase(){
+          console.log("called");
+          firebase.database().ref('users/').set({
+            username: "Iggy",
+            email: "Ig"
+          });
+      }
   },
 };
