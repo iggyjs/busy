@@ -25,7 +25,6 @@ module.exports = {
   // add your custom rules here
   'rules': {
     'global-require': 0,
-
     'no-param-reassign': 0,
 
     'import/no-unresolved': 0,

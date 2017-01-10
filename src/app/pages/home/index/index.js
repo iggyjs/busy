@@ -17,13 +17,5 @@ export default {
     VPanel: require('components/panel/panel.vue'),
   },
 
-  methods:{
-      testFirebase(){
-          console.log("called");
-          firebase.database().ref('users/').set({
-            username: "Iggy",
-            email: "Ig"
-          });
-      }
-  },
+  methods:{},
 };
