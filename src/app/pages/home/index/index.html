@@ -1,5 +1,19 @@
 <v-layout>
-    <div class="container">
-        <button v-on:click="" type="button" class="btn btn-success">Check API</button>
-    </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <input type="text" v-model="newDailyTodo" v-on:keyup.enter="addDailyTodo" placeholder="What needs to be done?">
+                <div v-for="i in dailyList" class="daily-to-do-item">
+                        {{i.item}}
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <input type="text" v-model="newWeeklyTodo" v-on:keyup.enter="addWeeklyTodo" placeholder="What needs to be done?">
+                <div v-for="i in weeklyList" class="weekly-to-do-item">
+                    {{i.item}}
+                </div>
+            </div>
+        </div>
+
 </v-layout>
