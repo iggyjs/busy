@@ -18,8 +18,8 @@ export default {
       return {
         newDailyTodo: "",
         newWeeklyTodo: "",
-        dailyId: 0,
-        weeklyId: 0,
+        dailyId: 1,
+        weeklyId: 1,
         dailyList: [],
         weeklyList: []
       }
@@ -32,12 +32,27 @@ export default {
       addDailyTodo(){
           let id = this.dailyId;
           this.dailyList.push({ uid : id, item: this.newDailyTodo});
+          this.newDailyTodo = "";
           this.dailyId++;
       },
+
       addWeeklyTodo(){
           let id = this.weeklyId;
           this.weeklyList.push({uid : id, item: this.newWeeklyTodo});
+          this.newWeeklyTodo = "";
           this.weeklyId++;
+      },
+
+      deleteDailyItem(item){
+          let index = this.dailyList.indexOf(item);
+          if (index > -1)
+            this.dailyList.splice(index,1);
+      },
+
+      deleteWeeklyItem(item){
+          let index = this.weeklyList.indexOf(item);
+          if (index > -1)
+            this.weeklyList.splice(index,1);
       }
   }
 };

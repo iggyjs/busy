@@ -2,16 +2,26 @@
 
         <div class="row">
             <div class="col-md-6">
+                <p>Your daily to do list</p>
                 <input type="text" v-model="newDailyTodo" v-on:keyup.enter="addDailyTodo" placeholder="What needs to be done?">
-                <div v-for="i in dailyList" class="daily-to-do-item">
-                        {{i.item}}
+
+                <div class="list-container">
+                    <div v-for="(i, index) in dailyList" class="daily-to-do-item">
+                        <p class="item-text">{{index + 1}} {{i.item}}</p>
+                        <i v-on:click="deleteDailyItem(i)" class="fa fa-close item-delete"></i>
+                    </div>
                 </div>
             </div>
 
             <div class="col-md-6">
+                <p>Your weekly to do list</p>
                 <input type="text" v-model="newWeeklyTodo" v-on:keyup.enter="addWeeklyTodo" placeholder="What needs to be done?">
-                <div v-for="i in weeklyList" class="weekly-to-do-item">
-                    {{i.item}}
+
+                <div class="list-container">
+                    <div v-for="(i, index) in weeklyList" class="weekly-to-do-item">
+                        <p class="item-text">{{index + 1}} {{i.item}}</p>
+                        <i v-on:click="deleteWeeklyItem(i)" class="fa fa-close item-delete"></i>
+                    </div>
                 </div>
             </div>
         </div>
