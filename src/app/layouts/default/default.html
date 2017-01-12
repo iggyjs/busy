@@ -1,5 +1,5 @@
 <div>
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default navbar-busy">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
@@ -13,20 +13,16 @@
             </div>
 
             <div class="collapse navbar-collapse" id="navbar">
-                <ul class="nav navbar-nav">
-                    <router-link :to="{ name: 'home.index' }" active-class="active" class="nav-item" tag="li"><a>Lists</a></router-link>
-                </ul>
-
-                <ul class="nav navbar-nav">
-                    <router-link :to="{ name: 'about.index' }" active-class="active" class="nav-item" tag="li"><a>About</a></router-link>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a class="nav-item-busy" href="#" @click.prevent="logout"><i class="fa fa-power-off" aria-hidden="true"></i></a></li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="#" @click.prevent="logout">
-                            <i class="fa fa-sign-out"></i>
-                        </a>
-                    </li>
+                    <router-link :to="{ name: 'about.index' }" active-class="busy-active" class="nav-item nav-item-busy" tag="li"><a>About</a></router-link>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <router-link :to="{ name: 'home.index' }" active-class="busy-active" class="nav-item nav-item-busy" tag="li"><a>Lists</a></router-link>
                 </ul>
             </div>
         </div>
@@ -36,7 +32,7 @@
         <div class="row">
             <div class="col-md-12">
                 <!-- equiv to UI-view-->
-                <slot></slot>
+                <slot id="mainContent"></slot>
             </div>
         </div>
     </div>

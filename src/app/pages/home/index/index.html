@@ -1,33 +1,37 @@
 <v-layout>
+    <div class="row">
+        <div class="col-md-6">
+            <p class="list-header-busy">Your Daily To-do List</p>
+            <input class="list-input-busy" type="text" v-model="newDailyTodo" v-on:keyup.enter="addDailyTodo" placeholder="What needs to be done?">
 
-        <div class="row">
-            <div class="col-md-6">
-                <p>Your daily to do list</p>
-                <input type="text" v-model="newDailyTodo" v-on:keyup.enter="addDailyTodo" placeholder="What needs to be done?">
-
-                <div class="list-container">
-                    <draggable :list="dailyList" @end="saveDailyItems">
-                        <div v-for="(i, index) in dailyList" class="daily-to-do-item">
-                            <p class="item-text">{{index + 1}} {{i.item}}</p>
-                            <i v-on:click="deleteDailyItem(i)" class="fa fa-close item-delete"></i>
-                        </div>
-                    </draggable>
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <p>Your weekly to do list</p>
-                <input type="text" v-model="newWeeklyTodo" v-on:keyup.enter="addWeeklyTodo" placeholder="What needs to be done?">
-
-                <div class="list-container">
-                    <draggable :list="weeklyList" @end="saveWeeklyItems">
-                        <div v-for="(i, index) in weeklyList" class="weekly-to-do-item">
-                            <p class="item-text">{{index + 1}} {{i.item}}</p>
-                            <i v-on:click="deleteWeeklyItem(i)" class="fa fa-close item-delete"></i>
-                        </div>
-                    </draggable>
-                </div>
+            <div class="list-container">
+                <draggable :list="dailyList" @end="saveDailyItems">
+                    <div v-for="(i, index) in dailyList" class="daily-to-do-item">
+                        <p class="item-text">{{index + 1}} {{i.item}}</p>
+                        <i v-on:click="deleteDailyItem(i)" class="fa fa-check item-delete"></i>
+                    </div>
+                </draggable>
             </div>
         </div>
 
+        <div class="col-md-6">
+            <p class="list-header-busy">Your Weekly To-do List</p>
+            <input class="list-input-busy" type="text" v-model="newWeeklyTodo" v-on:keyup.enter="addWeeklyTodo" placeholder="What needs to be done?">
+
+            <div class="list-container">
+                <draggable :list="weeklyList" @end="saveWeeklyItems">
+                    <div v-for="(i, index) in weeklyList" class="weekly-to-do-item">
+                        <p class="item-text">{{index + 1}} {{i.item}}</p>
+
+
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+
+
+                        <i v-on:click="deleteWeeklyItem(i)" class="fa fa-check item-delete"></i>
+                    </div>
+                </draggable>
+            </div>
+        </div>
+    </div>
 </v-layout>

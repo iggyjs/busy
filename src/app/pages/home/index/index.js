@@ -1,3 +1,5 @@
+// TODO: Error handle empty submissions, quickly implement max items for list
+
 import draggable from 'vuedraggable';
 import authService from 'src/app/services/auth';
 let firebase = require('firebase');
