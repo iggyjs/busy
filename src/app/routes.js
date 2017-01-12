@@ -1,16 +1,4 @@
-/* ============
- * Routes File
- * ============
- *
- * The routes and redirects are defined in this file
- */
-
-
-/**
- * The routes
- *
- * @type {object} The routes
- */
+// Routes
 export default [
   // Home
   {
@@ -24,7 +12,7 @@ export default [
     },
   },
 
-  // Account
+  // About
   {
     path: '/about',
     name: 'about.index',
