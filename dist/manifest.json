@@ -1,0 +1,13 @@
+{
+  "manifest_version": 2,
+
+  "name": "busy",
+  "description": "This extension overrides the default New Tab page to show a daily and weekly to-do list.",
+  "version": "1.4",
+
+  "chrome_url_overrides" : {
+    "newtab": "index.html"
+  },
+  "content_security_policy": "script-src 'self' https://connect.facebook.net; object-src 'self'",
+  "permissions" : ["management"]
+}
