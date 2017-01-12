@@ -6,7 +6,7 @@
                 <input type="text" v-model="newDailyTodo" v-on:keyup.enter="addDailyTodo" placeholder="What needs to be done?">
 
                 <div class="list-container">
-                    <draggable :list="dailyList" @start="drag=true" @end="drag=false">
+                    <draggable :list="dailyList" @start="drag=true" @end="saveDailyItems">
                         <div v-for="(i, index) in dailyList" class="daily-to-do-item">
                             <p class="item-text">{{index + 1}} {{i.item}}</p>
                             <i v-on:click="deleteDailyItem(i)" class="fa fa-close item-delete"></i>
@@ -20,7 +20,7 @@
                 <input type="text" v-model="newWeeklyTodo" v-on:keyup.enter="addWeeklyTodo" placeholder="What needs to be done?">
 
                 <div class="list-container">
-                    <draggable :list="weeklyList" @start="drag=true" @end="drag=false">
+                    <draggable :list="weeklyList" @start="drag=true" @end="saveWeeklyItems">
                         <div v-for="(i, index) in weeklyList" class="weekly-to-do-item">
                             <p class="item-text">{{index + 1}} {{i.item}}</p>
                             <i v-on:click="deleteWeeklyItem(i)" class="fa fa-close item-delete"></i>

@@ -1,9 +1,3 @@
-/* ============
- * Home Index Page
- * ============
- *
- * The home index page
- */
 import draggable from 'vuedraggable';
 import authService from 'src/app/services/auth';
 let firebase = require('firebase');
@@ -15,8 +9,10 @@ let app = firebase.initializeApp({apiKey: "AIzaSyD2-KL9ohgtMUZQi27QyoswmuWNsEA-t
 });
 
 export default {
+
   data() {
       return {
+        user: {},
         currentUserId: null,
         newDailyTodo: "",
         newWeeklyTodo: "",
@@ -24,11 +20,30 @@ export default {
         weeklyList: []
       }
   },
+
+  mounted(){
+    const vueInstance = this;
+    let c = function() {
+        let u = firebase.auth().currentUser;
+        if (u != null) {
+           let id = u.uid;
+           firebase.database().ref('users/' + id).once('value').then((snapshot) => {
+               vueInstance.user = snapshot.val();
+               vueInstance.dailyList = snapshot.val().dailyList.list;
+               vueInstance.weeklyList = snapshot.val().weeklyList.list;
+           });
+           return;
+        }
+    }
+    setTimeout(c, 1000);
+  },
+
   components: {
     draggable,
     VLayout: require('layouts/default/default.vue'),
     VPanel: require('components/panel/panel.vue'),
   },
+
   methods:{
       addDailyTodo(){
           let id = this.dailyId;
@@ -89,6 +104,5 @@ export default {
               console.log("Weekly list saved");
           });
       }
-
   }
 };
