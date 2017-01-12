@@ -16,10 +16,9 @@ let app = firebase.initializeApp({apiKey: "AIzaSyD2-KL9ohgtMUZQi27QyoswmuWNsEA-t
 export default {
   data() {
       return {
+        currentUserId: null,
         newDailyTodo: "",
         newWeeklyTodo: "",
-        dailyId: 1,
-        weeklyId: 1,
         dailyList: [],
         weeklyList: []
       }
@@ -31,28 +30,63 @@ export default {
   methods:{
       addDailyTodo(){
           let id = this.dailyId;
-          this.dailyList.push({ uid : id, item: this.newDailyTodo});
+          this.dailyList.push({ item: this.newDailyTodo});
           this.newDailyTodo = "";
           this.dailyId++;
+          this.saveDailyItems()
       },
 
       addWeeklyTodo(){
           let id = this.weeklyId;
-          this.weeklyList.push({uid : id, item: this.newWeeklyTodo});
+          this.weeklyList.push({item: this.newWeeklyTodo});
           this.newWeeklyTodo = "";
           this.weeklyId++;
+          this.saveWeeklyItems()
       },
 
       deleteDailyItem(item){
           let index = this.dailyList.indexOf(item);
-          if (index > -1)
+          if (index > -1) {
             this.dailyList.splice(index,1);
+            this.saveDailyItems()
+          }
       },
 
       deleteWeeklyItem(item){
           let index = this.weeklyList.indexOf(item);
-          if (index > -1)
+          if (index > -1){
             this.weeklyList.splice(index,1);
+            this.saveWeeklyItems();
+          }
+      },
+
+      saveDailyItems(){
+          let id = firebase.auth().currentUser.uid;
+          let list = this.dailyList;
+
+          if (this.currentUserId == null){
+              this.currentUserId = id;
+          }
+
+          //save current daily list
+          firebase.database().ref('users/' + id + '/dailyList/').set({list}).then(() => {
+              console.log("daily list saved");
+          });
+      },
+
+      saveWeeklyItems(){
+          let id = firebase.auth().currentUser.uid;
+          let list = this.weeklyList;
+
+          if (this.currentUserId == null){
+              this.currentUserId = id;
+          }
+
+          //save current weekly list
+          firebase.database().ref('users/' + id + '/weeklyList/').set({list}).then(() =>{
+              console.log("Weekly list saved");
+          });
       }
+
   }
 };
