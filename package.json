@@ -37,6 +37,7 @@
     "firebase": "^3.6.4",
     "font-awesome": "^4.7.0",
     "jquery": "^3.1.1",
+    "pages": "0.0.16",
     "vue": "^2.1.0",
     "vue-i18n": "^4.10.0",
     "vue-router": "^2.1.1",
