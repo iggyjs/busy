@@ -1,6 +1,3 @@
-// TODO: Error handle empty submissions, quickly implement max items for list
-// FIXME: On user create handle creation of completed lists to avoid undefined errors
-
 import draggable from 'vuedraggable';
 import lodash from 'lodash';
 import authService from 'src/app/services/auth';
@@ -73,19 +70,28 @@ export default {
   methods:{
       addDailyTodo(){
           if (this.dailyId < this.maxDaily) {
+              let val = this.newDailyTodo && this.newDailyTodo.trim()
+              if (!val) {
+                return;
+              }
+
               let id = this.dailyId;
               this.dailyList.push({ item: this.newDailyTodo });
               this.newDailyTodo = "";
               this.dailyId++;
               this.saveDailyItems();
           } else {
-            //Show toastr  
+            //Show toastr
           }
       },
 
       addWeeklyTodo(){
           if (this.weeklyId < this.maxWeekly) {
-              console.log(this.weeklyId);
+              let val = this.newWeeklyTodo && this.newWeeklyTodo.trim()
+              if (!val) {
+                return;
+              }
+
               let id = this.weeklyId;
               this.weeklyList.push({item: this.newWeeklyTodo});
               this.newWeeklyTodo = "";
