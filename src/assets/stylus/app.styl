@@ -1,38 +1,185 @@
-/* ============
- * Main Stylesheet
- * ============
- *
- * Used for the global application styling.
- *
- * The stylus CSS-preprocessor is used for this boilerplate.
- * If you don't want to use Stylus, that's fine!
- * Replace the stylus directory with the CSS preprocessor you want.
- * Require the stylesheet in the bootstrap.js file & install the webpack loader.
- *
- * It's that easy...
- *
- * http://stylus-lang.com/
- */
+/*Global styles*/
+ @font-face {
+   font-family: 'A';
+   src: url('../fonts/A.otf');
+ }
+
+ body {
+     font-family: A;
+     border-top: 3px solid rgba(67,67,67,0.1);
+ }
 .padding-left
   padding-left: 8px
 
+/*End global styles*/
+
+/*Login styles*/
+
+#loginButton{
+    height: 40px;
+}
+
+#loginHeader{
+    padding-top: 200px;
+    padding-bottom: 10px;
+    font-size: 55px;
+}
+
+#loginHorizontalBar{
+    height: 3px;
+    width: 50px;
+    margin-bottom: 30px;
+    background-color: #434343;
+}
+
+/*End login styles*/
+
 /*Home styles*/
 .list-container {
-    margin-top:15px;
+    margin-top:35px;
+}
+
+.list-header-busy {
+    font-size: 18px;
+}
+
+.list-input-busy {
+    padding-top:10px;
+    padding-left: 4px;
+    padding-right: 20px;
+    padding-bottom: 4px;
+    border:none;
+    border-bottom: 1px solid #DCDCDC;
+    outline: none;
+    width: 100%;
+    font-size: 24px;
+}
+
+.list-input-busy::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: rgba(67,67,67,0.1);
+  font-style: italic;
+}
+
+.list-input-busy::-moz-placeholder { /* Firefox 19+ */
+  color: rgba(67,67,67,0.1);
+  font-style: italic;
+}
+
+.list-input-busy:-ms-input-placeholder { /* IE 10+ */
+  color: rgba(67,67,67,0.1);
+  font-style: italic;
+}
+
+.list-input-busy:-moz-placeholder { /* Firefox 18- */
+  color: rgba(67,67,67,0.1);
+  font-style: italic;
 }
 
 .daily-to-do-item, .weekly-to-do-item {
-    border: 1px solid #434343;
+    border: none;
+    border-bottom: 1px solid #DCDCDC;
     height: 40px;
-    margin-bottom: 10px;
+    margin-bottom: 40px;
+}
+
+.daily-to-do-item-completed,  .weekly-to-do-item-completed {
+    border: none;
+    border-left: 14px solid #6EC8B7;
+    border-bottom: 10px solid #FFFFFF;
+    height: 40px;
+    margin-bottom: 40px;
+}
+
+.item-index-banner{
+    float: left;
+    margin-right: 9px;
+    padding-top:2px;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+}
+
+.item-index-span {
+    position: absolute;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+    font-size: 12px;
+    margin-left: 12px;
+    margin-top: 6px;
+    color: #FFFFFF;
 }
 
 .item-text{
     float: left;
+    margin-top:5px;
+    margin-left: 5px;
+}
+
+.item-text-completed{
+    margin-left: 10px;
+    font-size:20px;
+    float: left;
+    color: #C2C2C2;
+    text-decoration: line-through;
+}
+
+.clear-completed {
+    color: rgba(67,67,67,0.3);
+    -webkit-transition: color 100ms linear;
+    -moz-transition: color 100ms linear;
+    -o-transition: color 100ms linear;
+    -ms-transition: color 100ms linear;
+    transition: color 100ms linear;
+    margin-left: 10px;
+    font-size: 11px;
+    font-style: normal;
+    cursor: pointer;
+}
+
+.clear-completed:hover {
+    color:#6F83BA
 }
 
 .item-delete{
+    color: rgba(67,67,67,0.2);
+    -webkit-transition: color 100ms linear;
+    -moz-transition: color 100ms linear;
+    -o-transition: color 100ms linear;
+    -ms-transition: color 100ms linear;
+    transition: color 100ms linear;
+    cursor: pointer;
     float: right;
 }
 
+.item-delete:hover{
+    color:#434343
+}
+
+.item-drag {
+    float: right;
+    margin-right: 10px;
+    color: rgba(67,67,67,0.2);
+    cursor: move;
+}
+
 /*End home styles*/
+
+
+/*Layout styles*/
+
+.navbar-busy{
+    background-color:#FFF !important;
+    border:none;
+    margin-top:10px;
+    margin-bottom: 20px;
+}
+
+.nav-item-busy{
+    font-size:12px;
+    padding-bottom:0px;
+}
+
+.busy-active {
+    border-bottom:solid 4px #434343;
+    border-left:solid 3px #FFF;
+}
+/* End layout styles */

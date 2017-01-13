@@ -1,10 +1,5 @@
-<v-layout>
-  <v-panel contextual-style="primary">
-    <h1 class="panel-title" slot="heading"></h1>
-    <div slot="body">
-      <center><button v-on:click="login(user)" class="btn btn-primary">Sign in with Google</button></center>
-    </div>
-    <div slot="footer">
-    </div>
-  </v-panel>
-</v-layout>
+<center>
+  <h1 id="loginHeader">_busy</h1>
+  <div id="loginHorizontalBar"></div>
+  <button id="loginButton" v-bind:style="buttonStyles[random(0, buttonStyles.length - 1)]" v-on:click="login(user)" class="btn">Log in with Google</button>
+</center>
