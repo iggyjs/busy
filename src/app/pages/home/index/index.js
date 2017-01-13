@@ -17,6 +17,10 @@ export default {
   data() {
       return {
         user: {},
+        maxDaily: 9,
+        maxWeekly: 9,
+        dailyId: 1,
+        weeklyId: 1,
         currentUserId: null,
         newDailyTodo: "",
         newWeeklyTodo: "",
@@ -43,11 +47,13 @@ export default {
                vueInstance.user = snapshot.val();
                // set daily lists
                vueInstance.dailyList = snapshot.val().dailyList.list;
+               vueInstance.dailyId = snapshot.val().dailyList.list.length;
                if (snapshot.val().dailyList.completed)
                 vueInstance.dailyListCompleted = snapshot.val().dailyList.completed.completedList;
 
                // set weekly lists
                vueInstance.weeklyList = snapshot.val().weeklyList.list;
+               vueInstance.weeklyId = snapshot.val().weeklyList.list.length;
                if (snapshot.val().weeklyList.completed)
                 vueInstance.weeklyListCompleted = snapshot.val().weeklyList.completed.completedList;
 
@@ -66,19 +72,29 @@ export default {
 
   methods:{
       addDailyTodo(){
-          let id = this.dailyId;
-          this.dailyList.push({ item: this.newDailyTodo });
-          this.newDailyTodo = "";
-          this.dailyId++;
-          this.saveDailyItems();
+          if (this.dailyId < this.maxDaily) {
+              let id = this.dailyId;
+              this.dailyList.push({ item: this.newDailyTodo });
+              this.newDailyTodo = "";
+              this.dailyId++;
+              this.saveDailyItems();
+          } else {
+            //Show toastr  
+          }
       },
 
       addWeeklyTodo(){
-          let id = this.weeklyId;
-          this.weeklyList.push({item: this.newWeeklyTodo});
-          this.newWeeklyTodo = "";
-          this.weeklyId++;
-          this.saveWeeklyItems()
+          if (this.weeklyId < this.maxWeekly) {
+              console.log(this.weeklyId);
+              let id = this.weeklyId;
+              this.weeklyList.push({item: this.newWeeklyTodo});
+              this.newWeeklyTodo = "";
+              this.weeklyId++;
+              this.saveWeeklyItems();
+         } else {
+            //Show toastr
+
+         }
       },
 
       markDailyItemCompleted(item){
