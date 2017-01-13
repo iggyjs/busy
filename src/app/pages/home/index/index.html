@@ -8,9 +8,20 @@
                 <draggable :list="dailyList" @end="saveDailyItems">
                     <div v-for="(i, index) in dailyList" class="daily-to-do-item">
                         <p class="item-text">{{index + 1}} {{i.item}}</p>
-                        <i v-on:click="deleteDailyItem(i)" class="fa fa-check item-delete"></i>
+                        <i v-on:click="markDailyItemCompleted(i)" class="fa fa-check item-delete"></i>
                     </div>
                 </draggable>
+            </div>
+
+            <!-- Completed Daily List -->
+            <div v-if="dailyListCompleted.length > 0" class="completed-container">
+                <p class="list-header-busy">Daily Completed</p>
+                <div class="list-container">
+                    <div v-for="(i, index) in dailyListCompleted" class="daily-to-do-item-completed">
+                        <i class="fa fa-check item-delete-completed"></i>
+                        <p class="item-text-completed">{{i.item}}</p>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -22,15 +33,20 @@
                 <draggable :list="weeklyList" @end="saveWeeklyItems">
                     <div v-for="(i, index) in weeklyList" class="weekly-to-do-item">
                         <p class="item-text">{{index + 1}} {{i.item}}</p>
-
-
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-
-
-                        <i v-on:click="deleteWeeklyItem(i)" class="fa fa-check item-delete"></i>
+                        <i v-on:click="markWeeklyItemCompleted(i)" class="fa fa-check item-delete"></i>
                     </div>
                 </draggable>
+            </div>
+
+            <!-- Completed Weekly List -->
+            <div v-if="weeklyListCompleted.length > 0" class="completed-container">
+                <p class="list-header-busy">Weekly Completed</p>
+                <div class="list-container">
+                    <div v-for="(i, index) in weeklyListCompleted" class="weekly-to-do-item-completed">
+                        <i class="fa fa-check item-delete-completed"></i>
+                        <p class="item-text-completed">{{i.item}}</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
