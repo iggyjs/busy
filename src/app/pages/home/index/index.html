@@ -9,6 +9,7 @@
                     <div v-for="(i, index) in dailyList" class="daily-to-do-item">
                         <p class="item-text">{{index + 1}} {{i.item}}</p>
                         <i v-on:click="markDailyItemCompleted(i)" class="fa fa-check item-delete"></i>
+                        <i class="fa fa-list-ul item-drag" aria-hidden="true"></i>
                     </div>
                 </draggable>
             </div>
@@ -18,7 +19,6 @@
                 <p class="list-header-busy">Daily Completed</p>
                 <div class="list-container">
                     <div v-for="(i, index) in dailyListCompleted" class="daily-to-do-item-completed">
-                        <i class="fa fa-check item-delete-completed"></i>
                         <p class="item-text-completed">{{i.item}}</p>
                     </div>
                 </div>
@@ -34,6 +34,7 @@
                     <div v-for="(i, index) in weeklyList" class="weekly-to-do-item">
                         <p class="item-text">{{index + 1}} {{i.item}}</p>
                         <i v-on:click="markWeeklyItemCompleted(i)" class="fa fa-check item-delete"></i>
+                        <i class="fa fa-list-ul item-drag" aria-hidden="true"></i>
                     </div>
                 </draggable>
             </div>
@@ -43,7 +44,6 @@
                 <p class="list-header-busy">Weekly Completed</p>
                 <div class="list-container">
                     <div v-for="(i, index) in weeklyListCompleted" class="weekly-to-do-item-completed">
-                        <i class="fa fa-check item-delete-completed"></i>
                         <p class="item-text-completed">{{i.item}}</p>
                     </div>
                 </div>
