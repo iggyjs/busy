@@ -35,6 +35,8 @@ export default {
   },
 
   mounted(){
+    this.bannerStyles = this.shuffleArray(this.bannerStyles);
+
     const vueInstance = this;
     let c = function() {
         let u = firebase.auth().currentUser;
@@ -68,6 +70,17 @@ export default {
   },
 
   methods:{
+      shuffleArray(arr){
+          let i, j, k;
+          for (i = arr.length; i; i--) {
+              j = Math.floor(Math.random() * i);
+              k = arr[i - 1];
+              arr[i - 1] = arr[j];
+              arr[j] = k;
+          }
+          return arr;
+      },
+
       addDailyTodo(){
           if (this.dailyId < this.maxDaily) {
               let val = this.newDailyTodo && this.newDailyTodo.trim()

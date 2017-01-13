@@ -3,4 +3,10 @@ export default {
     VLayout: require('layouts/default/default.vue'),
     VPanel: require('components/panel/panel.vue'),
   },
+  data() {
+      return {
+          window: window
+      }
+  },
+  methods: {}
 };
