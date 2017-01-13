@@ -7,7 +7,10 @@
             <div class="list-container">
                 <draggable :list="dailyList" @end="saveDailyItems">
                     <div v-for="(i, index) in dailyList" class="daily-to-do-item">
-                        <p class="item-text">{{index + 1}} {{i.item}}</p>
+                        <div v-bind:style="bannerStyles[index % bannerStyles.length]" class="item-index-banner">
+                            <span class="item-index-span">{{index + 1}}</span>
+                        </div>
+                        <p class="item-text">{{i.item}}</p>
                         <i v-on:click="markDailyItemCompleted(i)" class="fa fa-check item-delete"></i>
                         <i class="fa fa-list-ul item-drag" aria-hidden="true"></i>
                     </div>
@@ -16,7 +19,9 @@
 
             <!-- Completed Daily List -->
             <div v-if="dailyListCompleted.length > 0" class="completed-container">
-                <p class="list-header-busy">Daily Completed</p>
+
+                <p class="list-header-busy">Daily Completed <i v-on:click="clearCompleted(0)" class="clear-completed">_clear</i></p>
+
                 <div class="list-container">
                     <div v-for="(i, index) in dailyListCompleted" class="daily-to-do-item-completed">
                         <p class="item-text-completed">{{i.item}}</p>
@@ -32,7 +37,11 @@
             <div class="list-container">
                 <draggable :list="weeklyList" @end="saveWeeklyItems">
                     <div v-for="(i, index) in weeklyList" class="weekly-to-do-item">
-                        <p class="item-text">{{index + 1}} {{i.item}}</p>
+                        <div v-bind:style="bannerStyles[index % bannerStyles.length]" class="item-index-banner">
+                            <span class="item-index-span">{{index + 1}}</span>
+                        </div>
+
+                        <p class="item-text">{{i.item}}</p>
                         <i v-on:click="markWeeklyItemCompleted(i)" class="fa fa-check item-delete"></i>
                         <i class="fa fa-list-ul item-drag" aria-hidden="true"></i>
                     </div>
@@ -41,7 +50,7 @@
 
             <!-- Completed Weekly List -->
             <div v-if="weeklyListCompleted.length > 0" class="completed-container">
-                <p class="list-header-busy">Weekly Completed</p>
+                <p class="list-header-busy">Weekly Completed <i v-on:click="clearCompleted(1)" class="clear-completed">_clear</i></p>
                 <div class="list-container">
                     <div v-for="(i, index) in weeklyListCompleted" class="weekly-to-do-item-completed">
                         <p class="item-text-completed">{{i.item}}</p>

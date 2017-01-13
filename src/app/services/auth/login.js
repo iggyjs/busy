@@ -29,7 +29,8 @@ export default (user) => {
             firebase.database().ref('users/' + user.uid).set({
                 email: user.email,
                 photoUrl: user.photoURL,
-                name: user.displayName
+                name: user.displayName,
+                // TODO: Add assumed fields here
             }).then(function(){
                 success('RandomGeneratedToken');
             });

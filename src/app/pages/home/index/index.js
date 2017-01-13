@@ -2,6 +2,7 @@
 // FIXME: On user create handle creation of completed lists to avoid undefined errors
 
 import draggable from 'vuedraggable';
+import lodash from 'lodash';
 import authService from 'src/app/services/auth';
 let firebase = require('firebase');
 let app = firebase.initializeApp({apiKey: "AIzaSyD2-KL9ohgtMUZQi27QyoswmuWNsEA-t9Q",
@@ -22,7 +23,13 @@ export default {
         dailyList: [],
         weeklyList: [],
         dailyListCompleted : [],
-        weeklyListCompleted : []
+        weeklyListCompleted : [],
+        bannerStyles: [
+            {backgroundColor: "#6F83BA"}, //indigo
+            {backgroundColor: "#BBDEFB"}, //baby blue
+            {backgroundColor: "#D14E5D"}, //red
+            {backgroundColor: "#FFD54F"}, //amber
+        ]
       }
   },
 
@@ -36,11 +43,13 @@ export default {
                vueInstance.user = snapshot.val();
                // set daily lists
                vueInstance.dailyList = snapshot.val().dailyList.list;
-               vueInstance.dailyListCompleted = snapshot.val().dailyList.completed.completedList;
+               if (snapshot.val().dailyList.completed)
+                vueInstance.dailyListCompleted = snapshot.val().dailyList.completed.completedList;
 
                // set weekly lists
                vueInstance.weeklyList = snapshot.val().weeklyList.list;
-               vueInstance.weeklyListCompleted = snapshot.val().weeklyList.completed.completedList;
+               if (snapshot.val().weeklyList.completed)
+                vueInstance.weeklyListCompleted = snapshot.val().weeklyList.completed.completedList;
 
            });
            return;
@@ -127,6 +136,23 @@ export default {
                   console.log("Weekly completed list saved");
               });
           });
+      },
+
+      clearCompleted(list) {
+          if (!list){
+            //0: Daily
+            this.dailyListCompleted = [];
+            this.saveDailyItems();
+          } else {
+            //1: Weekly
+            this.weeklyListCompleted = [];
+            this.saveWeeklyItems();
+          }
+      },
+
+      random(min, max){
+          return _.random(min, max);
       }
+
   }
 };
