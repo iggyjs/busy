@@ -1,5 +1,7 @@
 import lodash from 'lodash';
+import store from './../../../store';
 import authService from './../../../services/auth';
+const firebase = require('firebase');
 
 export default {
     data() {
@@ -16,11 +18,14 @@ export default {
             ]
         };
     },
-
-    created() {
-        this.buttonStyles = this.shuffleArray(this.buttonStyles);
+    created(){
+        chrome.identity.getProfileUserInfo(function(response){
+            if (response.id){
+                store.dispatch('login', response.id);
+                authService.handleTransition(response);
+            }
+        });
     },
-
     methods: {
         login(user) {
             authService.login(user);

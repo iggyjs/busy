@@ -5,10 +5,9 @@ import store from './../../store';
 const firebase = require('firebase');
 
 export default () => {
-  firebase.auth().signOut().then(function() {
+    localStorage.removeItem('userId');
     store.dispatch('logout');
     Vue.router.push({
       name: 'login.index',
     });
-  });
 };

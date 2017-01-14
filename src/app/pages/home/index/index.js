@@ -1,3 +1,4 @@
+import Vue from 'vue';
 import draggable from 'vuedraggable';
 import lodash from 'lodash';
 import authService from 'src/app/services/auth';
@@ -14,6 +15,7 @@ export default {
   data() {
       return {
         user: {},
+        userId: localStorage.getItem("id_token"),
         maxDaily: 9,
         maxWeekly: 9,
         dailyId: 1,
@@ -35,26 +37,35 @@ export default {
   },
 
   mounted(){
-    this.bannerStyles = this.shuffleArray(this.bannerStyles);
+    // this.bannerStyles = this.shuffleArray(this.bannerStyles);
 
     const vueInstance = this;
     let c = function() {
-        let u = firebase.auth().currentUser;
+        let u = localStorage.getItem("id_token");
+        this.userId = u;
+
         if (u != null) {
-           let id = u.uid;
-           firebase.database().ref('users/' + id).once('value').then((snapshot) => {
+           firebase.database().ref('users/' + u).once('value').then((snapshot) => {
                vueInstance.user = snapshot.val();
+
                // set daily lists
-               vueInstance.dailyList = snapshot.val().dailyList.list;
-               vueInstance.dailyId = snapshot.val().dailyList.list.length;
-               if (snapshot.val().dailyList.completed)
-                vueInstance.dailyListCompleted = snapshot.val().dailyList.completed.completedList;
+               if (snapshot.val().dailyList) {
+                   vueInstance.dailyList = snapshot.val().dailyList.list;
+                   vueInstance.dailyId = snapshot.val().dailyList.list.length;
+
+                   if (snapshot.val().dailyList.completed)
+                    vueInstance.dailyListCompleted = snapshot.val().dailyList.completed.completedList;
+               }
 
                // set weekly lists
-               vueInstance.weeklyList = snapshot.val().weeklyList.list;
-               vueInstance.weeklyId = snapshot.val().weeklyList.list.length;
-               if (snapshot.val().weeklyList.completed)
-                vueInstance.weeklyListCompleted = snapshot.val().weeklyList.completed.completedList;
+               if (snapshot.val().weeklyList) {
+                    vueInstance.weeklyList = snapshot.val().weeklyList.list;
+                    vueInstance.weeklyId = snapshot.val().weeklyList.list.length;
+
+                    if (snapshot.val().weeklyList.completed)
+                     vueInstance.weeklyListCompleted = snapshot.val().weeklyList.completed.completedList;
+               }
+
 
            });
            return;
@@ -136,7 +147,7 @@ export default {
       },
 
       saveDailyItems(){
-          let id = firebase.auth().currentUser.uid;
+          let id = this.userId;
           let list = this.dailyList;
           let completedList = this.dailyListCompleted;
 
@@ -155,7 +166,7 @@ export default {
       },
 
       saveWeeklyItems(){
-          let id = firebase.auth().currentUser.uid;
+          let id = this.userId;
           let list = this.weeklyList;
           let completedList = this.weeklyListCompleted;
 

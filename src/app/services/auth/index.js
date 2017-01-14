@@ -1,9 +1,9 @@
 import login from './login';
 import logout from './logout';
-import register from './register';
+import handleTransition from './handleTransition';
 
 export default {
   login,
   logout,
-  register,
+  handleTransition,
 };
