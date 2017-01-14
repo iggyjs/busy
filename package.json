@@ -1,7 +1,7 @@
 {
   "name": "vue-2-boilerplate",
   "version": "0.0.0",
-  "description": "A boilerplate for medium to large Vue 2 single page applications",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "node build/dev-server.js",
