@@ -48,23 +48,27 @@ export default {
            firebase.database().ref('users/' + u).once('value').then((snapshot) => {
                vueInstance.user = snapshot.val();
 
-               // set daily lists
                if (snapshot.val().dailyList) {
-                   vueInstance.dailyList = snapshot.val().dailyList.list;
-                   vueInstance.dailyId = snapshot.val().dailyList.list.length;
+                   // set daily lists
+                   if (snapshot.val().dailyList.list) {
+                       vueInstance.dailyList = snapshot.val().dailyList.list;
+                       vueInstance.dailyId = snapshot.val().dailyList.list.length;
+                   }
 
                    if (snapshot.val().dailyList.completed)
                     vueInstance.dailyListCompleted = snapshot.val().dailyList.completed.completedList;
                }
 
-               // set weekly lists
                if (snapshot.val().weeklyList) {
-                    vueInstance.weeklyList = snapshot.val().weeklyList.list;
-                    vueInstance.weeklyId = snapshot.val().weeklyList.list.length;
+                   // set weekly lists
+                   if (snapshot.val().weeklyList.list) {
+                        vueInstance.weeklyList = snapshot.val().weeklyList.list;
+                        vueInstance.weeklyId = snapshot.val().weeklyList.list.length;
+                   }
 
-                    if (snapshot.val().weeklyList.completed)
-                     vueInstance.weeklyListCompleted = snapshot.val().weeklyList.completed.completedList;
-               }
+                   if (snapshot.val().weeklyList.completed)
+                    vueInstance.weeklyListCompleted = snapshot.val().weeklyList.completed.completedList;
+              }
 
 
            });
