@@ -1,5 +1,5 @@
 {
-  "name": "vue-2-boilerplate",
+  "name": "busy",
   "version": "0.0.0",
   "description": "",
   "main": "index.js",
@@ -25,12 +25,10 @@
     "Page",
     "Application"
   ],
-  "author": "Peter van Meijgaard <petervanmeijgaard@hotmail.com>",
-  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/petervmeijgaard/vue-2-boilerplate/issues"
+    "url": "https://github.com/iggyjoaquin/busy/issues
   },
-  "homepage": "https://github.com/petervmeijgaard/vue-2-boilerplate#readme",
+  "homepage": "https://github.com/iggyjoaquin/busy/,
   "dependencies": {
     "axios": "^0.15.3",
     "bootstrap": "^3.3.7",
