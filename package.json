@@ -26,9 +26,9 @@
     "Application"
   ],
   "bugs": {
-    "url": "https://github.com/iggyjoaquin/busy/issues
+    "url": "https://github.com/iggyjoaquin/busy/issues"
   },
-  "homepage": "https://github.com/iggyjoaquin/busy/,
+  "homepage": "https://github.com/iggyjoaquin/busy/,",
   "dependencies": {
     "axios": "^0.15.3",
     "bootstrap": "^3.3.7",

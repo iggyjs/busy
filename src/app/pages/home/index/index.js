@@ -37,7 +37,7 @@ export default {
   },
 
   mounted(){
-    // this.bannerStyles = this.shuffleArray(this.bannerStyles);
+    this.bannerStyles = this.shuffleArray(this.bannerStyles);
 
     const vueInstance = this;
     let c = function() {
