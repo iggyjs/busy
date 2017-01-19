@@ -97,6 +97,11 @@ export default {
       },
 
       addDailyTodo(){
+          if (this.newDailyTodo.trim().length > 140) {
+              this.notifyError("Keep it under 140 characters.");
+              return;
+          }
+
           if (this.dailyId < this.maxDaily) {
               let val = this.newDailyTodo && this.newDailyTodo.trim()
               if (!val) {
@@ -114,6 +119,11 @@ export default {
       },
 
       addWeeklyTodo(){
+          if (this.newWeeklyTodo.trim().length > 140) {
+              this.notifyError("Keep it under 140 characters.");
+              return;
+          }
+
           if (this.weeklyId < this.maxWeekly) {
               let val = this.newWeeklyTodo && this.newWeeklyTodo.trim()
               if (!val) {
@@ -202,6 +212,16 @@ export default {
 
       random(min, max){
           return _.random(min, max);
+      },
+
+      notifyError(msg) {
+          $(".notify-error").hide();
+          $('<div/>').prependTo('body').addClass('notify-error').html(msg).slideDown();
+          setTimeout(this.slideUpError, 2000);
+      },
+
+      slideUpError(){
+          $(".notify-error").slideUp();
       }
 
   }
