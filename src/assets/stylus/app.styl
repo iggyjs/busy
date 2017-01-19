@@ -76,12 +76,14 @@
 }
 
 .daily-to-do-item, .weekly-to-do-item {
+    overflow: auto;
     border: none;
     border-bottom: 1px solid #DCDCDC;
-    height: 40px;
+    min-height: 40px;
     margin-bottom: 40px;
-    padding-bottom: 50px;
+    padding-bottom: 20px;
 }
+
 
 .daily-to-do-item-completed,  .weekly-to-do-item-completed {
     border: none;
@@ -100,12 +102,16 @@
     border-radius: 50%;
 }
 
+.item-text-container {
+    padding-left: 3px;
+}
+
 .item-index-span {
     position: absolute;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
     font-size: 12px;
-    margin-left: 12px;
-    margin-top: 6px;
+    margin-left: -3px;
+    margin-top: 5px;
     color: #FFFFFF;
 }
 
@@ -113,6 +119,11 @@
     float: left;
     margin-top:5px;
     margin-left: 5px;
+    font-size:14px;
+}
+
+.item-text-container {
+
 }
 
 .item-text-completed{

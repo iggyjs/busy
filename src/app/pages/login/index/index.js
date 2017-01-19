@@ -19,12 +19,12 @@ export default {
         };
     },
     created(){
-        chrome.identity.getProfileUserInfo(function(response){
-            if (response.id){
-                store.dispatch('login', response.id);
-                authService.handleTransition(response);
-            }
-        });
+        // chrome.identity.getProfileUserInfo(function(response){
+        //     if (response.id){
+        //         store.dispatch('login', response.id);
+        //         authService.handleTransition(response);
+        //     }
+        // });
     },
     methods: {
         login(user) {

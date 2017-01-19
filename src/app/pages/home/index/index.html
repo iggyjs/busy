@@ -7,12 +7,19 @@
             <div class="list-container">
                 <draggable :list="dailyList" @end="saveDailyItems">
                     <div v-for="(i, index) in dailyList" class="daily-to-do-item">
-                        <div v-bind:style="bannerStyles[index % bannerStyles.length]" class="item-index-banner">
+
+                        <div v-bind:style="bannerStyles[index % bannerStyles.length]" class="item-index-banner col-sm-1">
                             <span class="item-index-span">{{index + 1}}</span>
                         </div>
-                        <p class="item-text">{{i.item}}</p>
-                        <i v-on:click="markDailyItemCompleted(i)" class="fa fa-check item-delete"></i>
-                        <i class="fa fa-list-ul item-drag" aria-hidden="true"></i>
+
+                        <div class="col-sm-9 item-text-container">
+                            <p class="item-text">{{i.item}}</p>
+                        </div>
+
+                        <div class="col-sm-2">
+                            <i v-on:click="markDailyItemCompleted(i)" class="fa fa-check item-delete"></i>
+                            <i class="fa fa-list-ul item-drag" aria-hidden="true"></i>
+                        </div>
                     </div>
                 </draggable>
             </div>
@@ -37,13 +44,18 @@
             <div class="list-container">
                 <draggable :list="weeklyList" @end="saveWeeklyItems">
                     <div v-for="(i, index) in weeklyList" class="weekly-to-do-item">
-                        <div v-bind:style="bannerStyles[index % bannerStyles.length]" class="item-index-banner">
+                        <div v-bind:style="bannerStyles[index % bannerStyles.length]" class="item-index-banner col-sm-1">
                             <span class="item-index-span">{{index + 1}}</span>
                         </div>
 
-                        <p class="item-text">{{i.item}}</p>
-                        <i v-on:click="markWeeklyItemCompleted(i)" class="fa fa-check item-delete"></i>
-                        <i class="fa fa-list-ul item-drag" aria-hidden="true"></i>
+                        <div class="col-sm-9 item-text-container">
+                            <p class="item-text">{{i.item}}</p>
+                        </div>
+
+                        <div class="col-sm-2">
+                            <i v-on:click="markWeeklyItemCompleted(i)" class="fa fa-check item-delete"></i>
+                            <i class="fa fa-list-ul item-drag" aria-hidden="true"></i>
+                        </div>
                     </div>
                 </draggable>
             </div>

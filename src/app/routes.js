@@ -6,10 +6,10 @@ export default [
     name: 'home.index',
     component: require('pages/home/index/index.vue'),
 
-    // If the user needs to be authenticated to view this page
-    meta: {
-      auth: true,
-    },
+    // // If the user needs to be authenticated to view this page
+    // meta: {
+    //   auth: true,
+    // },
   },
 
   // About
