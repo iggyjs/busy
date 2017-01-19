@@ -16,8 +16,9 @@
                             <p class="item-text">{{i.item}}</p>
                         </div>
 
-                        <div class="col-sm-2">
+                        <div class="col-sm-2 item-tools">
                             <i v-on:click="markDailyItemCompleted(i)" class="fa fa-check item-delete"></i>
+                            <i v-on:click="removeDailyItem(i)" class="fa fa-close item-remove"></i>
                             <i class="fa fa-list-ul item-drag" aria-hidden="true"></i>
                         </div>
                     </div>
@@ -48,12 +49,13 @@
                             <span class="item-index-span">{{index + 1}}</span>
                         </div>
 
-                        <div class="col-sm-9 item-text-container">
+                        <div class="col-sm-8 item-text-container">
                             <p class="item-text">{{i.item}}</p>
                         </div>
 
-                        <div class="col-sm-2">
+                        <div class="col-sm-3">
                             <i v-on:click="markWeeklyItemCompleted(i)" class="fa fa-check item-delete"></i>
+                            <i v-on:click="removeWeeklyItem(i)" class="fa fa-close item-remove"></i>
                             <i class="fa fa-list-ul item-drag" aria-hidden="true"></i>
                         </div>
                     </div>

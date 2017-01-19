@@ -160,6 +160,23 @@ export default {
           this.saveWeeklyItems();
       },
 
+
+      removeDailyItem(item) {
+          let index = this.dailyList.indexOf(item);
+          if (index > -1) {
+            this.dailyList.splice(index,1);
+          }
+          this.saveDailyItems();
+      },
+
+      removeWeeklyItem(item) {
+          let index = this.weeklyList.indexOf(item);
+          if (index > -1){
+            this.weeklyList.splice(index,1);
+          }
+          this.saveWeeklyItems();
+      },
+
       saveDailyItems(){
           let id = this.userId;
           let list = this.dailyList;
