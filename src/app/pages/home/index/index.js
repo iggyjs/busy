@@ -227,6 +227,16 @@ export default {
           }
       },
 
+      moveDailyCompleted() {
+         for (let i=0; i<this.dailyListCompleted.length; i++) {
+             this.weeklyListCompleted.push(this.dailyListCompleted[i]);
+         }
+
+         this.dailyListCompleted = [];
+         this.saveDailyItems();
+         this.saveWeeklyItems();
+      },
+
       random(min, max){
           return _.random(min, max);
       },

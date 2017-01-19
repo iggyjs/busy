@@ -28,7 +28,7 @@
             <!-- Completed Daily List -->
             <div v-if="dailyListCompleted.length > 0" class="completed-container">
 
-                <p class="list-header-busy">Daily Completed <i v-on:click="clearCompleted(0)" class="clear-completed">_clear</i></p>
+                <p class="list-header-busy">Daily Completed <i v-on:click="clearCompleted(0)" class="clear-completed">_clear</i><i v-on:click="moveDailyCompleted()" class="clear-completed">_moveToWeekly</i></p>
 
                 <div class="list-container">
                     <div v-for="(i, index) in dailyListCompleted" class="daily-to-do-item-completed">
