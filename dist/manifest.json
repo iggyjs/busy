@@ -3,7 +3,7 @@
 
   "name": "busy",
   "description": "This extension overrides the default New Tab page to show a daily and weekly to-do list.",
-  "version": "2.2",
+  "version": "2.3",
 
   "chrome_url_overrides" : {
     "newtab": "index.html"

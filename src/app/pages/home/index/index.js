@@ -40,6 +40,7 @@ export default {
     this.bannerStyles = this.shuffleArray(this.bannerStyles);
 
     const vueInstance = this;
+
     let c = function() {
         let u = localStorage.getItem("id_token");
         this.userId = u;
@@ -102,7 +103,7 @@ export default {
               return;
           }
 
-          if (this.dailyId < this.maxDaily) {
+          if (this.dailyList.length < this.maxDaily) {
               let val = this.newDailyTodo && this.newDailyTodo.trim()
               if (!val) {
                 return;
@@ -124,7 +125,7 @@ export default {
               return;
           }
 
-          if (this.weeklyId < this.maxWeekly) {
+          if (this.weeklyList.length < this.maxWeekly) {
               let val = this.newWeeklyTodo && this.newWeeklyTodo.trim()
               if (!val) {
                 return;

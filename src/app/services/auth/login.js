@@ -6,6 +6,7 @@ const firebase = require('firebase');
 const shortid = require('shortid');
 
 const success = () => {
+    console.log('called');
   Vue.router.push({
     name: 'home.index',
   });
@@ -13,7 +14,8 @@ const success = () => {
 
 
 export default (user) => {
-    let  interactive = true;
+    let interactive = true;
+    console.log('updated');
     success();
     // chrome.identity.getAuthToken({interactive: !!interactive}, function(token) {
     //   if (chrome.runtime.lastError && !interactive) {
