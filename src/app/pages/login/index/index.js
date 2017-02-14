@@ -1,5 +1,6 @@
 import lodash from 'lodash';
 import store from './../../../store';
+import config from '../../../config.js';
 import authService from './../../../services/auth';
 const firebase = require('firebase');
 
@@ -19,12 +20,14 @@ export default {
         };
     },
     created(){
-        // chrome.identity.getProfileUserInfo(function(response){
-        //     if (response.id){
-        //         store.dispatch('login', response.id);
-        //         authService.handleTransition(response);
-        //     }
-        // });
+        if (!config.DEVELOPMENT) {
+            chrome.identity.getProfileUserInfo(function(response){
+                if (response.id){
+                    store.dispatch('login', response.id);
+                    authService.handleTransition(response);
+                }
+            });
+        }
     },
     methods: {
         login(user) {

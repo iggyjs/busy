@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import config from '../../../config.js';
 import draggable from 'vuedraggable';
 import lodash from 'lodash';
 import authService from 'src/app/services/auth';
@@ -38,7 +39,6 @@ export default {
 
   mounted(){
     this.bannerStyles = this.shuffleArray(this.bannerStyles);
-
     const vueInstance = this;
 
     let c = function() {
