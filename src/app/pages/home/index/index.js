@@ -4,12 +4,7 @@ import draggable from 'vuedraggable';
 import lodash from 'lodash';
 import authService from 'src/app/services/auth';
 let firebase = require('firebase');
-let app = firebase.initializeApp({apiKey: "AIzaSyD2-KL9ohgtMUZQi27QyoswmuWNsEA-t9Q",
-    authDomain: "busy-d727c.firebaseapp.com",
-    databaseURL: "https://busy-d727c.firebaseio.com",
-    storageBucket: "busy-d727c.appspot.com",
-    messagingSenderId: "555996787874"
-});
+let app = firebase.initializeApp(config.firebase);
 
 export default {
 
