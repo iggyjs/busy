@@ -19,6 +19,13 @@ export default {
         currentUserId: null,
         newDailyTodo: "",
         newWeeklyTodo: "",
+
+        editingDailyTodo: "",
+        editingDailyTodoObject: {},
+
+        editingWeeklyTodo: "",
+        editingWeeklyTodoObject: {},
+
         dailyList: [],
         weeklyList: [],
         dailyListCompleted : [],
@@ -108,6 +115,10 @@ export default {
               this.dailyList.push({ item: this.newDailyTodo });
               this.newDailyTodo = "";
               this.dailyId++;
+
+              //reset edits
+              this.editingDailyTodoObject = {};
+
               this.saveDailyItems();
           } else {
             //Show toastr
@@ -147,7 +158,6 @@ export default {
       },
 
       markWeeklyItemCompleted(item){
-
           let index = this.weeklyList.indexOf(item);
           if (index > -1){
             this.weeklyList.splice(index,1);
@@ -211,6 +221,55 @@ export default {
           });
       },
 
+      editDailyItem(item){
+          this.editingDailyTodoObject = item;
+          this.editingDailyTodo = item.item;
+      },
+
+      addDailyEditedItem() {
+        if (this.editingDailyTodo.trim().length > 140) {
+            this.notifyError("Keep it under 140 characters.");
+            return;
+        }
+
+        if (this.editingDailyTodo.trim().length === 0) {
+            this.editingDailyTodo = "";
+            this.editingDailyTodoObject = {};
+            return;
+        }
+
+        let oldIdx = this.dailyList.indexOf(this.editingDailyTodoObject);
+        this.dailyList[oldIdx].item = this.editingDailyTodo;
+        this.editingDailyTodo = "";
+        this.editingDailyTodoObject = {};
+        this.saveDailyItems();
+      },
+
+
+      editWeeklyItem(item){
+          this.editingWeeklyTodoObject = item;
+          this.editingWeeklyTodo = item.item;
+      },
+
+      addWeeklyEditedItem() {
+        if (this.editingWeeklyTodo.trim().length > 140) {
+            this.notifyError("Keep it under 140 characters.");
+            return;
+        }
+
+        if (this.editingWeeklyTodo.trim().length === 0) {
+            this.editingWeeklyTodo = "";
+            this.editingWeeklyTodoObject = {};
+            return;
+        }
+
+        let oldIdx = this.weeklyList.indexOf(this.editingWeeklyTodoObject);
+        this.weeklyList[oldIdx].item = this.editingWeeklyTodo;
+        this.editingWeeklyTodo = "";
+        this.editingWeeklyTodoObject = {};
+        this.saveWeeklyItems();
+      },
+
       clearCompleted(list) {
           if (!list){
             //0: Daily
@@ -241,6 +300,16 @@ export default {
           $(".notify-error").hide();
           $('<div/>').prependTo('body').addClass('notify-error').html(msg).slideDown();
           setTimeout(this.slideUpError, 2000);
+      },
+
+      resetEditingDaily() {
+          this.editingDailyTodo = "";
+          this.editingDailyTodoObject = {};
+      },
+
+      resetEditingWeekly() {
+          this.editingWeeklyTodo = "";
+          this.editingWeeklyTodoObject = {};
       },
 
       slideUpError(){

@@ -12,15 +12,23 @@
                             <span class="item-index-span">{{index + 1}}</span>
                         </div>
 
-                        <div class="col-sm-9 item-text-container">
-                            <p class="item-text">{{i.item}}</p>
+                        <div v-if="editingDailyTodoObject != i" class="col-sm-9 item-text-container">
+                            <p v-on:click="editDailyItem(i)" class="item-text">{{i.item}}</p>
+                        </div>
+
+                        <div v-if="editingDailyTodoObject == i" class="col-sm-9">
+                            <input v-on:keyup.enter="addDailyEditedItem" v-model="editingDailyTodo" class="item-edit-input" type="text">
+                            <i v-on:click="resetEditingDaily" class="fa fa-expand cancel-edit"></i>
                         </div>
 
                         <div class="col-sm-2 item-tools">
-                            <i v-on:click="markDailyItemCompleted(i)" class="fa fa-check item-delete"></i>
-                            <i v-on:click="removeDailyItem(i)" class="fa fa-close item-remove"></i>
-                            <i class="fa fa-list-ul item-drag" aria-hidden="true"></i>
+                            <div v-if="editingDailyTodoObject != i" >
+                                <i v-on:click="markDailyItemCompleted(i)" class="fa fa-check item-delete"></i>
+                                <i v-on:click="removeDailyItem(i)" class="fa fa-close item-remove"></i>
+                                <i class="fa fa-list-ul item-drag" aria-hidden="true"></i>
+                            </div>
                         </div>
+
                     </div>
                 </draggable>
             </div>
@@ -49,8 +57,13 @@
                             <span class="item-index-span">{{index + 1}}</span>
                         </div>
 
-                        <div class="col-sm-8 item-text-container">
-                            <p class="item-text">{{i.item}}</p>
+                        <div v-if="editingWeeklyTodoObject != i"  class="col-sm-8 item-text-container">
+                            <p v-on:click="editWeeklyItem(i)" class="item-text">{{i.item}}</p>
+                        </div>
+
+                        <div v-if="editingWeeklyTodoObject == i" class="col-sm-8">
+                            <input v-on:keyup.enter="addWeeklyEditedItem" v-model="editingWeeklyTodo" class="item-edit-input" type="text">
+                            <i  v-on:click="resetEditingWeekly" class="fa fa-expand cancel-edit"></i>
                         </div>
 
                         <div class="col-sm-3">
