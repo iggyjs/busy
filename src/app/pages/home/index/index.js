@@ -19,13 +19,10 @@ export default {
         currentUserId: null,
         newDailyTodo: "",
         newWeeklyTodo: "",
-
         editingDailyTodo: "",
         editingDailyTodoObject: {},
-
         editingWeeklyTodo: "",
         editingWeeklyTodoObject: {},
-
         dailyList: [],
         weeklyList: [],
         dailyListCompleted : [],
