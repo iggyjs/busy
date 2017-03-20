@@ -8,6 +8,9 @@ Built for the sake of learning:
 - using npm modules to organize code.
 - using other tools minify and concatenate code for deployment.
 
-Run using:
-- `$ npm run dev` for developing
-- `$ npm run build` to build new dist
+Available for direct download [here.](https://chrome.google.com/webstore/detail/busy/jcdlinhdlocefdcjpemcbibdddilaohh)
+
+If you fork:
+- Rename `example_config.js` to `config.js` and leave within the `app` directory. Change Firebase credentials as necessary.
+- Run `$ npm run dev` for developing.
+- Run `$ npm run build` to build new dist.
